@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hogwarts Houses Data</title>
+    <style>
+        body {
+            font-family: 'Garamond', serif;
+            background-image: url('./image/hog1.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .house-card {
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            max-width: 300px; 
+            position: relative;
+        }
+        .house-card:hover {
+            transform: translateY(-5px);
+        }
+        label[for^="updateMarks"] {
+        color: #ffffff;
+        }
+        .house-card h2 {
+            color: #ffffff;
+            text-align: center;
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .house-card input[type="number"] {
+            width: 80px;
+            padding: 5px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #fffdfd;
+            font-family: 'Garamond', serif;
+        }
+        .house-card button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Garamond', serif;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .house-card button:hover {
+            background-color: #555;
+        }
+        .house-card div {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .total-marks-label {
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .total-marks-value {
+            font-size: 18px;
+            color: #ffffff;
+            padding: 5px 10px; /* Padding to create space around the total marks */
+            border: 5px solid #ffffff; /* Border around the total marks */
+            border-radius: 5px; /* Rounded corners for the border */
+            display: inline-block;
+        }
+
+        /* House-specific colors */
+        .gryffindor {
+            border: 2px solid #ff0101;
+        }
+
+        .hufflepuff {
+            border: 2px solid #FFD700;
+        }
+
+        .ravenclaw {
+            border: 2px solid #003af8;
+        }
+
+        .slytherin {
+            border: 2px solid #00ff59;
+        }
+        /* Add different background images for each house */
+.gryffindor {
+    background-image: url('./image/3.png');
+}
+
+.hufflepuff {
+    background-image: url('./image/4.png');
+}
+
+.ravenclaw {
+    background-image: url('./image/2.png');
+}
+
+.slytherin {
+    background-image: url('./image/1.png');
+}
+
+.house-card {
+    border-radius: 10px;
+    padding: 20px;
+    margin: 250px 20px; /* Adjusted margin to add space from the top */
+    background-color: rgba(255, 255, 255, 0.8); /* Background color with opacity */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; 
+    height: 300px;   
+    max-width: 300px; /* Set maximum width for responsiveness */
+    position: relative;
+    background-size: cover; /* Cover the entire card with the background image */
+    opacity: 0.9;  /* Opacity for the background image */
+
+}
+
+
+
+        /* Responsive styles */
+        @media screen and (max-width: 600px) {
+            .house-card {
+                max-width: calc(50% - 40px);
+                margin: 50px 20px;
+            }
+        }
+        @media screen and (max-width: 400px) {
+            .house-card {
+                max-width: calc(100% - 40px);
+                margin: 50px 20px;
+            }
+        }
+        .hogwarts-crest {
+            position: absolute;
+            top: -50px;
+            left: calc(50% - 50px);
+            width: 100px;
+        }
+        .house-banner {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="house-card gryffindor">
+            <h2>Gryffindor</h2>
+            <label for="updateMarks1">Update Marks:</label>
+            <input type="number" id="updateMarks1" name="updateMarks1">
+            <button onclick="updateMarks(1)">Update Marks</button>
+            <button onclick="clearMarks(1)">Clear Marks</button>
+            <div>
+                <span class="total-marks-label">Total Marks:</span>
+                <strong class="total-marks-value" id="totalMarks1Display">0</strong>
+            </div>
+        </div>
+
+        <div class="house-card hufflepuff">
+         <h2>Hufflepuff</h2>
+            <label for="updateMarks2">Update Marks:</label>
+            <input type="number" id="updateMarks2" name="updateMarks2">
+            <button onclick="updateMarks(2)">Update Marks</button>
+            <button onclick="clearMarks(2)">Clear Marks</button>
+            <div>
+                <span class="total-marks-label">Total Marks:</span>
+                <span class="total-marks-value" id="totalMarks2Display">0</span>
+            </div>
+        </div>
+
+        <div class="house-card ravenclaw">
+            <h2>Ravenclaw</h2>
+            <label for="updateMarks3">Update Marks:</label>
+            <input type="number" id="updateMarks3" name="updateMarks3">
+            <button onclick="updateMarks(3)">Update Marks</button>
+            <button onclick="clearMarks(3)">Clear Marks</button>
+            <div>
+                <span class="total-marks-label">Total Marks:</span>
+                <span class="total-marks-value" id="totalMarks3Display">0</span>
+            </div>
+        </div>
+
+        <div class="house-card slytherin">
+           <h2>Slytherin</h2>
+            <label for="updateMarks4">Update Marks:</label>
+            <input type="number" id="updateMarks4" name="updateMarks4">
+            <button onclick="updateMarks(4)">Update Marks</button>
+            <button onclick="clearMarks(4)">Clear Marks</button>
+            <div>
+                <span class="total-marks-label">Total Marks:</span>
+                <span class="total-marks-value" id="totalMarks4Display">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to update marks
+        function updateMarks(houseNumber) {
+            var updateMarksInput = document.getElementById("updateMarks" + houseNumber);
+            var updateMarksValue = parseInt(updateMarksInput.value);
+
+            // Check if the input value is valid
+            if (isNaN(updateMarksValue) || updateMarksValue <= 0) {
+                alert("Please enter a valid positive number for updating marks.");
+                return;
+            }
+
+            var totalMarksDisplay = document.getElementById("totalMarks" + houseNumber + "Display");
+            var totalMarks = parseInt(totalMarksDisplay.innerText);
+
+            totalMarks += updateMarksValue;
+            totalMarksDisplay.innerText = totalMarks;
+            updateMarksInput.value = ""; // Clear the input field after updating
+
+            // Reorder houses based on total marks
+            reorderHouses();
+        }
+
+        // Function to clear marks
+        function clearMarks(houseNumber) {
+            var totalMarksDisplay = document.getElementById("totalMarks" + houseNumber + "Display");
+            totalMarksDisplay.innerText = "0";
+
+            // Reorder houses based on total marks
+            reorderHouses();
+        }
+
+        // Function to reorder houses based on total marks
+        function reorderHouses() {
+            var housesContainer = document.querySelector(".container");
+            var houses = housesContainer.children;
+            var housesArray = Array.prototype.slice.call(houses);
+
+            // Sort houses based on total marks
+            housesArray.sort(function(a, b) {
+                var aTotal = parseInt(a.querySelector(".total-marks-value").innerText);
+                var bTotal = parseInt(b.querySelector(".total-marks-value").innerText);
+                return bTotal - aTotal;
+            });
+
+            // Append sorted houses to container
+            housesArray.forEach(function(house) {
+                housesContainer.appendChild(house);
+            });
+
+            // Store marks in localStorage
+            storeMarks();
+        }
+
+        // Function to store marks in localStorage
+        function storeMarks() {
+            var housesContainer = document.querySelector(".container");
+            var houses = housesContainer.children;
+
+            // Loop through each house to store marks
+            for (var i = 0; i < houses.length; i++) {
+                var houseNumber = i + 1;
+                var totalMarksDisplay = houses[i].querySelector(".total-marks-value");
+                var totalMarks = parseInt(totalMarksDisplay.innerText);
+
+                // Store marks for each house
+                localStorage.setItem("totalMarksHouse" + houseNumber, totalMarks);
+            }
+        }
+
+        // Function to retrieve marks from localStorage on page load
+        window.onload = function() {
+            var housesContainer = document.querySelector(".container");
+            var houses = housesContainer.children;
+
+            // Loop through each house to retrieve marks
+            for (var i = 0; i < houses.length; i++) {
+                var houseNumber = i + 1;
+                var totalMarks = localStorage.getItem("totalMarksHouse" + houseNumber);
+
+                // Set retrieved marks for each house
+                if (totalMarks !== null) {
+                    var totalMarksDisplay = houses[i].querySelector(".total-marks-value");
+                    totalMarksDisplay.innerText = totalMarks;
+                }
+            }
+        };
+    </script>
+</body>
+</html>
+
